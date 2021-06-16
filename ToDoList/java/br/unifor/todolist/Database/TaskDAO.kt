@@ -3,6 +3,7 @@ package br.unifor.todolist.Database
 import androidx.room.*
 import br.unifor.todolist.Model.Task
 
+//CRUD da Task
 @Dao
 interface TaskDAO {
 
