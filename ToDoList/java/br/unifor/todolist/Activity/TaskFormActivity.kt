@@ -49,6 +49,7 @@ class TaskFormActivity : AppCompatActivity(), View.OnClickListener {
         if(mTaskId != -1){
 
             GlobalScope.launch {
+                //Preenchendo os campos da tela de editar tarefa com as informações da tarefa clicada
                 val task = taskDAO.find(mTaskId)
 
                 handler.post {
@@ -64,6 +65,7 @@ class TaskFormActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when(v?.id){
+            
             R.id.task_add_button_save -> {
 
                 val name = mTaskFormName.text.toString()
@@ -74,6 +76,7 @@ class TaskFormActivity : AppCompatActivity(), View.OnClickListener {
                     mTaskFormName.error = ("Este campo não pode ser vazio!")
                 }
 
+                //Inserindo nova tarefa, caso o id dela seja o valor padrão(-1)
                 if(mTaskId == -1){
 
                     val task = Task(
@@ -94,6 +97,7 @@ class TaskFormActivity : AppCompatActivity(), View.OnClickListener {
 
                 } else {
 
+                    //Caso o valor do id já exista, ele direciona para a atualização da tarefa
                     val task = Task( mTaskId,
                             name,
                             description,
