@@ -6,6 +6,8 @@ import br.unifor.todolist.Database.ToDoDatabase
 
 object DatabaseUtil {
 
+    //Singleton de instanciamento do database ROOM
+    
     private  var db: ToDoDatabase? = null
 
     fun getInstance(context: Context): ToDoDatabase{
