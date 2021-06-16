@@ -10,6 +10,7 @@ import br.unifor.todolist.Model.Task
 import br.unifor.todolist.R
 
 
+//Criando o ViewHolder
 class TaskAdapter( val tasks: List<Task>): RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
      private var listener: TaskItemListener? = null
@@ -19,6 +20,7 @@ class TaskAdapter( val tasks: List<Task>): RecyclerView.Adapter<TaskAdapter.Task
         return TaskViewHolder(itemView, listener)
     }
 
+    //Carregando as informações da tarefa no TaskView(nome, descrição e se está finalizada)
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         holder.taskName.text = tasks[position].name
         holder.taskDescription.text = tasks[position].description
@@ -38,6 +40,7 @@ class TaskAdapter( val tasks: List<Task>): RecyclerView.Adapter<TaskAdapter.Task
         this.listener = listener
     }
 
+    //Preenchendo o ViewHolder
     class TaskViewHolder(itemView: View, listener: TaskItemListener?):RecyclerView.ViewHolder(itemView){
         val taskName: TextView = itemView.findViewById(R.id.item_task_textview_name)
         val taskDescription: TextView = itemView.findViewById(R.id.item_task_textview_description)
