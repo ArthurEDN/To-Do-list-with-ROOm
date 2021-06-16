@@ -5,6 +5,7 @@ import androidx.room.Relation
 import br.unifor.todolist.Model.Task
 import br.unifor.todolist.Model.User
 
+//Relacionar usuários com suas tarefas
 data class UserWithTasks(
     @Embedded val user: User,
     @Relation(
