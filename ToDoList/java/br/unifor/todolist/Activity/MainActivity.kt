@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, TaskItemListener
 
         mTaskAdd = findViewById(R.id.main_floatingbutton_addtask)
         mTaskAdd.setOnClickListener(this)
-
+        
         if (intent != null) {
             mUserId = intent.getIntExtra("userId", -1)
         }
@@ -57,6 +57,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, TaskItemListener
 
             if (mUserId != -1) {
 
+                //Organizando o Recycle view na main para mostrar todas as tarefas do usuário
                 mUserWithTasks = userDAO.findUserWithTasks(mUserId)
                 mTaskList.clear()
                 mTaskList.addAll(mUserWithTasks.tasks)
@@ -80,6 +81,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, TaskItemListener
 
     override fun onClick(v: View?) {
         when (v?.id) {
+            //Redireciona para a criação de uma nova tarefa
             R.id.main_floatingbutton_addtask -> {
                 val it = Intent(applicationContext, TaskFormActivity::class.java)
                 it.putExtra("userId", mUserId)
@@ -89,6 +91,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, TaskItemListener
     }
 
     override fun onClick(v: View, position: Int) {
+        //Redireciona para a edição de uma tarefa
         val it = Intent(applicationContext, TaskFormActivity::class.java)
         it.putExtra("userId", mUserId)
         it.putExtra("taskId", mUserWithTasks.tasks[position].id)
@@ -97,6 +100,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, TaskItemListener
 
     override fun onLongClick(v: View, position: Int) {
 
+        //Excluindo tarefa
+        
         val dialog = AlertDialog.Builder(this)
                 .setTitle("ToDo List")
                 .setMessage("Você deseja excluir a tarefa  ${mUserWithTasks.tasks[position].name}?")
