@@ -48,7 +48,9 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
         when(v?.id){
 
+            //Registro de um novo usuário
             R.id.Register_button_registrar ->{
+                
                 val firstName = mFirstName.text.toString()
                 val lastName = mLastName.text.toString()
                 val email = mEmail.text.toString()
@@ -90,6 +92,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
                         return
                     }
 
+                    //Inserção de um novo usuário caso não existe, caso existe, exibe uma mensagem de erro
                     GlobalScope.launch {
                         
                         val handler = Handler(Looper.getMainLooper())
