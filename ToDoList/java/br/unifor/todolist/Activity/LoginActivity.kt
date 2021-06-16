@@ -54,6 +54,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
             R.id.Login_button_signin ->{
 
+                //Verificando se os campos estão todos preenchidos
+                
                 val email = mLoginEmail.text.toString()
                 val password = mLoginPassword.text.toString()
 
@@ -73,6 +75,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
                     GlobalScope.launch {
 
+                        //Buscando usuário por email no banco de dados 
+                        
                         val user = userDao.findByEmail(email)
 
                         if(user != null) {
