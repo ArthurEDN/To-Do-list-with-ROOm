@@ -3,7 +3,8 @@ package br.unifor.todolist.Database
 import androidx.room.*
 import br.unifor.todolist.Model.User
 
-@Dao //CRUD
+
+@Dao //CRUD do Usuário
 interface UserDAO {
 
    @Insert fun insert(user: User)
